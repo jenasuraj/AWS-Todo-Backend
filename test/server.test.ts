@@ -1,6 +1,6 @@
 import request from "supertest";
 import { Request, Response } from "express";
-import { app, getHealth } from "./server";
+import { app, getHealth } from "../server";
 
 describe("getHealth controller", () => {
   it("responds with 200 and status ok", () => {

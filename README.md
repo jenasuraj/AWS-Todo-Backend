@@ -15,4 +15,4 @@ The server listens on `PORT` (default `4000`). Health check: `GET /health`.
 
 ## Tests
 
-Tests are named `*.test.ts` and sit next to the code they test.
+Tests live in the `test/` folder and are named `*.test.ts`.

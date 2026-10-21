@@ -2,7 +2,6 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  // Naming convention: tests are named *.test.ts
-  testMatch: ["**/*.test.ts"],
-  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
+  // Convention: tests live in test/ and are named *.test.ts
+  testMatch: ["<rootDir>/test/**/*.test.ts"],
 };
