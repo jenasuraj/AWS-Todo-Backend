@@ -1,15 +1,13 @@
 import express, { Request, Response } from "express";
+import FirstRPAHandler from "./modules/rpa/first";
 
 export const app = express();
-
 app.use(express.json());
 
-// Controller: simple health check
-export const getHealth = (_req: Request, res: Response) => {
-  res.status(200).json({ status: "ok" });
-};
 
-app.get("/health", getHealth);
+app.post("/first-rpa", FirstRPAHandler);
+
+
 
 // Only start listening when run directly, so tests can import `app`
 if (require.main === module) {
