@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { getBrowser } from "../../lib/browser";
-import {EnquiryData} from "./types";
-
+import { EnquiryData } from "./types";
 
 const DEFAULT_DATA: EnquiryData = {
   name: "Rahul Sharma",
@@ -13,7 +12,6 @@ const DEFAULT_DATA: EnquiryData = {
 };
 
 export default async function FirstRPAHandler(req: Request, res: Response) {
-
   const data: EnquiryData = { ...DEFAULT_DATA, ...(req.body ?? {}) };
   const browser = await getBrowser();
   const context = await browser.newContext({ viewport: null });
@@ -42,12 +40,10 @@ export default async function FirstRPAHandler(req: Request, res: Response) {
     await page.getByRole("option", { name: data.source, exact: true }).click();
     await page.locator("textarea").fill(data.query);
 
-
     // 5. SUBMIT, and catch the server's response to that submit
-    const responsePromise = page.waitForResponse(
-      (r) => r.request().method() === "POST",
-      { timeout: 15_000 }
-    );
+    const responsePromise = page.waitForResponse((r) => r.request().method() === "POST", {
+      timeout: 15_000,
+    });
 
     await page.getByRole("button", { name: "Submit Enquiry" }).click();
     const response = await responsePromise;

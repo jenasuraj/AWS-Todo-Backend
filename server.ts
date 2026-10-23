@@ -4,10 +4,7 @@ import FirstRPAHandler from "./modules/rpa/first";
 export const app = express();
 app.use(express.json());
 
-
 app.post("/first-rpa", FirstRPAHandler);
-
-
 
 // Only start listening when run directly, so tests can import `app`
 if (require.main === module) {
